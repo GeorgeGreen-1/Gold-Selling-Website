@@ -5,13 +5,11 @@
 @mixin flexRow() {
     display: flex;
     flex-direction: row;
-    justify-content: center;
 }
 
 @mixin flexCol() {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 @mixin gridOneFr() {
@@ -30,6 +28,24 @@
     grid-template-columns: repeat( auto-fit, minmax(250px, 1fr) );
 }
 
+@mixin hrProp() {
+    width: 100px;
+    height: 8px;
+    background-color: $gold;
+    border: none;
+}
+
+@mixin fontProp() {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    font-family: $main-font;
+}
+
+.poi{
+    cursor: pointer;
+}
+
 // Reset css
 *{
     margin: 0;
@@ -43,6 +59,199 @@
 
 //Main
 body{
-    width: 100vw;
     @include gridOneFr();
+    width: 100vw;
+    gap: 60px; //changed
+    background-color: $body-color;
+    font-family: $main-font;
+
+    // Header Section style
+    header{
+        @include flexRow();
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+
+        nav{
+            display: $disp-none;
+
+            ul{
+                @include flexRow();
+                gap: 39px;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 30px;
+            }
+        }
+
+        .menu-bar{
+            i{
+                font-size: 45px;
+                color: #ffffff;
+            }
+        }
+    }
+    // End Header Section
+
+    // Main Section Style
+    .main-section{
+        @include gridOneFr();
+        gap: 79px;
+        padding: 20px;
+
+        .value-proposition{
+            max-width: 626px;
+            @include flexCol();
+            gap: 30px;
+
+            h2{
+                font-weight: 700;
+                font-size: 30px; //changed 48px
+                line-height: 42px; //changed 72px
+                color: $title-color;
+            }
+
+            hr{
+                @include hrProp();
+            }
+
+            p{
+                font-weight: 400;
+                font-size: 17px; //changed 20px
+                line-height: 30px;
+                color: $title-color;
+            }
+
+            div{
+                @include flexRow();
+                gap: 24px;
+
+                .learn-more-btn{
+                    @include similarBtns();
+                    @include fontProp();
+                    border: 2px solid $gold;
+                    background: transparent;
+                    color: $title-color;
+                }
+
+                .sell-gold-btn{
+                    @include similarBtns();
+                    @include fontProp();
+                    background: $gold;
+                    color: $title-color;
+                }
+            }
+        }
+
+        .main-golds{
+            width: 100%;
+            max-width: 878px;
+        }
+
+        .converter{
+            @include flexCol();
+            gap: 50px;
+            padding: 20px; //changed
+            background: $gold;
+            border-radius: 10px;
+            color: $black-font;
+            max-width: 1528px;
+
+            .title{
+                @include flexRow();
+                align-items: center;
+                justify-content: space-between;
+
+                h2{
+                    font-weight: 600;
+                    font-size: 30px;
+                    line-height: 48px;
+                    color: $black-font;
+                }
+
+                span{
+                    @include flexRow();
+                    @include fontProp();
+                    align-items: center;
+                    gap: 10px;
+                    color: $red-btns;
+                    cursor: pointer;
+                }
+            }
+
+            .converter-body{
+                @include flexRow();
+                align-items: center;
+                column-gap: 111px;
+                row-gap: 30px;
+                flex-wrap: wrap;
+
+                .buying-price{
+                    @include flexCol();
+                    gap: 14px;
+
+                    p{
+                        @include fontProp();
+                        color: $black-font;
+                        text-transform: uppercase;
+                    }
+
+                    button{
+                        @include fontProp();
+                        border: 3px solid rgba(255, 255, 255, 0.35);
+                        background: transparent;
+                        width: 139px;
+                        height: 50px;
+                        cursor: pointer;
+                    }
+                }
+
+                .gold-stat{
+                    @include flexCol();
+                    gap: 6px;
+
+                    .stat-title{
+                        @include fontProp();
+                    }
+
+                    .stat-body{
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 24px;
+
+                        i{
+                            font-size: 15px;
+                            color: $red-btns;
+                            margin-right: 3px;
+                        }
+                    }
+                }
+
+                .conv-inputs{
+                    @include flexCol();
+                    gap: 13px;
+
+                    input{
+                        @include fontProp();
+                        width: 367px;
+                        height: 71px;
+                        background: rgba(218, 218, 218, 0.5);
+                        border: none;
+                        padding: 23px;
+                        outline: none;
+                    }
+                }
+
+                button{
+                    @include similarBtns();
+                    @include fontProp();
+                    border: none;
+                    background: $red-btns;
+                    color: $title-color;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    // End Main Section Style
 }
