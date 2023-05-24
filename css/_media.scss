@@ -1,0 +1,21 @@
+
+// Tablet screen size
+@mixin tablet {
+    @media screen and (min-width: 700px) {
+        @content;
+    }
+}
+
+// Laptop screen size
+@mixin laptop {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}
+
+// Desktop screen size
+@mixin desktop {
+    @media screen and (min-width: 1600px) {
+        @content;
+    }
+}
